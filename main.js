@@ -8,53 +8,77 @@ const modalYear = document.querySelector('.year')
 const modalDescription = document.querySelector('.description')
 async function getBooks() {
     const inputValue = document.querySelector('input').value
-    let response = await fetch(`https://openlibrary.org/search.json?q=${inputValue}&page=2&limit=10`)
-    let data = await response.json()
+    const query = encodeURIComponent(inputValue)
+    const response = await fetch(`https://openlibrary.org/search.json?q=${query}&limit=10`)
+    const data = await response.json()
     return data.docs
 
 }
 async function showBooks(e) {
     e.preventDefault()
-    showLoading()
-    books = await getBooks()
-    if (books.length !== 0) {
-        const row = document.querySelector('.row')
-        row.classList.remove('text-center');
-        row.innerHTML = ""
-        for (let book of books) {
-            let image = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : `https://placehold.co/220x320?text=No+Cover`;
-            const div = document.createElement('div')
-            div.className = 'col-lg-3 col-md-6 col-sm-12'
-            div.innerHTML = `
-                    <div class="card book-card m-3" data-id="${book.key}" style="width: 220px; height: 400px; background-color: #F5F0EB; border: none; cursor:pointer;">
-            <img src="${image}"  style="width: 100% ; height: 80% ; object-fit: cover;" class="card-img-top" alt="...">
-            <div class="card-body my-1">
-                <h6 class="card-text fw-semibold">${book.title}</h6>
-                <h6 class="card-author">${book.author_name?.[0] || 'Unknown Author'} </h6>
-            </div>
-            </div>
-        `
-            row.appendChild(div)
+    const inputValue = document.querySelector('input').value
+    if (!inputValue.trim()) return
+    try {
+        showLoading()
+        books = await getBooks()
+        if (books.length !== 0) {
+            const row = document.querySelector('.row')
+            row.classList.remove('text-center');
+            row.innerHTML = ""
+            for (let book of books) {
+                let image = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : `https://placehold.co/220x320?text=No+Cover`;
+                const div = document.createElement('div')
+                div.className = 'col-lg-3 col-md-6 col-sm-12'
+                div.innerHTML = `
+                        <div class="card book-card m-3" data-id="${book.key}" style="width: 220px; height: 400px; background-color: #F5F0EB; border: none; cursor:pointer;">
+                <img src="${image}"  style="width: 100% ; height: 80% ; object-fit: cover;" class="card-img-top" alt="${book.title}">
+                <div class="card-body my-1">
+                    <h6 class="card-text fw-semibold">${book.title}</h6>
+                    <h6 class="card-author">${book.author_name?.[0] || 'Unknown Author'} </h6>
+                </div>
+                </div>
+            `
+                row.appendChild(div)
 
-        }
+            }
 
-    } else {
-        const row = document.querySelector('.row')
-        row.classList.add = 'text-center'
-        row.innerHTML = `
-    <div class="not-found d-flex flex-column justify-content-center align-items-center">
-        <i class="bi bi-question-circle fs-1"></i>
-        <h2>Nothing found.</h2>
-        <p>We couldn’t find any books matching your search.</p>
-        <button id="clearSearch" type="button" class="btn btn-outline-dark rounded-4 px-4">
-            clear search
-        </button>
-    </div>
+        } else {
+            const row = document.querySelector('.row')
+            row.classList.add('text-center')
+            row.innerHTML = `
+            <div class="not-found ">
+                <i class="bi bi-question-circle fs-1"></i>
+                <h2>Nothing found.</h2>
+                <p>We couldn’t find any books matching your search.</p>
+                <button id="clearSearch" type="button" class="btn btn-outline-dark rounded-4 px-4">
+                    clear search
+                </button>
+            </div>
 `;
 
+        }
+    } catch (error) {
+        console.log(error)
+        showError()
     }
 
 }
+const errorAlert = document.getElementById("errorAlert");
+const closeError = document.getElementById("closeError");
+
+function showError(message = "We couldn't load the books. Please try again.") {
+    errorAlert.querySelector("p").textContent = message;
+
+    errorAlert.classList.add("show");
+
+    setTimeout(() => {
+        errorAlert.classList.remove("show");
+    }, 4000);
+}
+
+closeError.addEventListener("click", () => {
+    errorAlert.classList.remove("show");
+});
 function showLoading() {
     const row = document.querySelector('.row');
 
@@ -102,42 +126,28 @@ async function openBookModal(id) {
 
     try {
 
-        const response = await fetch("/api/book-description", {
+const response = await fetch("http://localhost:3000/api/book-description", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: book.title,
+        author: book.author_name?.[0],
+        description: book.first_sentence?.[0]
+    })
+});
 
-            method: "POST",
+const data = await response.json();
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                title: book.title,
-                author: book.author_name?.[0] || "Unknown Author",
-                description: book.description || ""
-            })
-
-        });
-
-
-        const data = await response.json();
-
-
-        if (!response.ok) {
-            throw new Error(data.error);
-        }
-
-
-        modalDescription.textContent =
-            data.description;
-
+if (!response.ok) {
+    throw new Error(data.error || "Failed to generate description");
+}
+modalDescription.textContent = data.description;
 
     } catch (error) {
-
-        console.error(error);
-
-        modalDescription.textContent =
-            "Sorry, we couldn't generate a description.";
-
+        console.log(error);
+        showError(error.message);
     }
 }
 
@@ -165,3 +175,8 @@ modal.addEventListener('click', function (e) {
         modal.style.display = 'none';
     }
 });
+document.addEventListener('keydown' , function(e) {
+    if(e.key === 'Escape'){
+        modal.style.display = 'none'
+    }
+})
