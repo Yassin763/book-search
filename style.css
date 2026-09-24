@@ -1,0 +1,857 @@
+body {
+    background-color: #F5F0EB !important;
+    font-family: "DM Serif Display", serif !important;
+}
+
+.container-fluid {
+    width: 90% !important;
+}
+
+nav {
+    border-bottom: 3px solid #E6E2DC;
+}
+
+li a {
+    position: relative;
+}
+
+li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #31302F;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+li a:hover::after {
+    width: 100%;
+}
+
+a img {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.contentPara {
+    width: 80%;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 2.5rem;
+}
+
+.content {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    margin-top: -2rem;
+}
+
+.para {
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #817D71;
+
+}
+
+.para::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: #817D71;
+}
+
+.search p:nth-child(1) {
+    font-size: 100px;
+    line-height: 0.85;
+    letter-spacing: -6px;
+    width: 20px;
+}
+
+.search p:nth-child(2) {
+    width: 32rem;
+    margin-top: 2rem;
+    color: #817D71;
+    font-size: .9rem;
+}
+
+.search i {
+    color: #7A5C44;
+}
+
+.form {
+    background-color: white;
+    width: 40rem;
+    padding: .35rem;
+    border-radius: 3rem;
+    border: 1px solid black;
+    margin-top: 2rem;
+}
+
+.form input {
+    flex: 1;
+    height: 2.5rem;
+    border: none;
+    border-radius: 3rem;
+}
+
+.form button {
+    border-radius: 3rem;
+    font-size: .8rem;
+    padding: .7rem 1.5rem;
+}
+
+.form button:hover {
+    background-color: #7A5C44;
+}
+
+.form button:active {
+    background-color: #674e39 !important;
+}
+
+.form input:focus {
+    box-shadow: none;
+}
+
+form i {
+    font-size: 10px;
+    color: black !important;
+}
+
+.book-collage {
+    position: relative;
+    width: 550px;
+    height: 500px;
+}
+
+.book {
+    position: absolute;
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+.book-1 {
+    top: 80px;
+    left: 50px;
+    transform: rotate(-8deg);
+}
+
+
+.book-2 {
+    top: 20px;
+    left: 220px;
+    transform: rotate(6deg);
+}
+
+.book-3 {
+    top: 150px;
+    left: 280px;
+    transform: rotate(-3deg);
+}
+
+.book-1:hover {
+    transform: translate(-20px, 20px) rotate(-15deg) scale(1.05);
+}
+
+.book-2:hover {
+    transform: translate(20px, -20px) rotate(12deg) scale(1.05);
+}
+
+.book-3:hover {
+    transform: translate(25px, 15px) rotate(-8deg) scale(1.05);
+}
+
+.book-collage::before {
+    content: "";
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border: 2px solid #d8d0c5;
+    border-radius: 50%;
+
+    top: 30px;
+    right: 20px;
+
+    z-index: 0;
+}
+
+.searchBox {
+    margin-bottom: 3rem;
+}
+
+.books {
+    border-top: 3px solid #E6E2DC;
+}
+
+.bookShow {
+    width: 80%;
+    max-width: 1180px;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.bookShow p:nth-child(1) {
+    letter-spacing: -2px;
+    line-height: 0.85;
+    width: 165px;
+}
+
+.bookShow p:nth-child(2) {
+    width: 32rem;
+    margin-top: 2rem;
+    color: #817D71;
+    font-size: .9rem;
+}
+
+.bookShow .currant-book {
+    min-width: 100%;
+    min-height: 200px;
+}
+
+footer {
+    background-color: #EBE7DE;
+    padding-top: 2rem;
+}
+
+.footer-links .brand p {
+    width: 32rem;
+    color: #817D71;
+    margin-top: 1rem;
+    font-size: .9rem;
+}
+
+.footer-links .links a {
+    text-decoration: none;
+    color: #817D71;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links .links h6 {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    gap: 20rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #E6E2DC;
+}
+
+.footer-about {
+    width: 95%;
+    margin: 0 auto;
+    padding: .5rem 0;
+}
+
+.footer-about span {
+    color: rgb(0, 169, 0);
+}
+
+.footer-about h6 {
+    font-size: .7rem;
+    color: #817D71;
+}
+
+.card-body {
+    font-family: sans-serif;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+}
+
+.card-author {
+    font-size: .8rem;
+
+}
+
+.card-img-top {
+    transition: all 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.skeleton-card {
+    width: 220px;
+    height: 400px !important;
+    background-color: #F5F0EB;
+    border: none;
+}
+
+.skeleton {
+    background-color: #e2ded8;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 80%;
+}
+
+.skeleton-title {
+    width: 80%;
+    height: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.skeleton-author {
+    width: 55%;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.5),
+            transparent);
+
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    100% {
+        left: 100%;
+    }
+}
+
+
+@media (min-width: 1200px) {
+
+    .contentPara,
+    .content,
+    .bookShow {
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 991.98px) {
+
+    .container-fluid {
+        width: 94% !important;
+    }
+
+    .contentPara,
+    .content,
+    .bookShow {
+        width: 90%;
+    }
+
+    .search p:nth-child(1) {
+        font-size: 75px;
+        letter-spacing: -4px;
+    }
+
+    .search p:nth-child(2) {
+        width: 100%;
+        max-width: 32rem;
+    }
+
+    .form {
+        width: 100%;
+        max-width: 40rem;
+    }
+
+    .book-collage {
+        width: 450px;
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .book {
+        width: 150px;
+        height: 215px;
+    }
+
+    .book-1 {
+        top: 70px;
+        left: 30px;
+    }
+
+    .book-2 {
+        top: 20px;
+        left: 180px;
+    }
+
+    .book-3 {
+        top: 130px;
+        left: 230px;
+    }
+
+    .book-collage::before {
+        width: 320px;
+        height: 320px;
+        right: 15px;
+    }
+
+
+    .footer-links {
+        gap: 5rem;
+    }
+
+    .footer-links .brand p {
+        width: 100%;
+        max-width: 28rem;
+    }
+
+    .bookShow .currant-book {
+        min-width: 100%;
+        min-height: 200px;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+
+    .container-fluid {
+        width: 92% !important;
+    }
+
+    .contentPara p {
+        margin-bottom: 2rem;
+    }
+
+    .contentPara,
+    .content,
+    .bookShow {
+        width: 90%;
+    }
+
+    .showcase {
+        flex-direction: column;
+    }
+
+    .search p:nth-child(1) {
+        font-size: 55px;
+        letter-spacing: -3px;
+        width: auto;
+        margin-top: 1rem;
+    }
+
+    .search p:nth-child(2) {
+        width: 100%;
+        font-size: .85rem;
+        line-height: 1.6;
+        margin-top: 1.5rem;
+    }
+
+    .para {
+        font-size: .7rem;
+    }
+
+    .para::before {
+        width: 30px;
+    }
+
+    .form {
+        width: 100%;
+        padding: .25rem;
+        margin-top: 1.5rem;
+    }
+
+    .form input {
+        min-width: 0;
+        height: 2.3rem;
+        font-size: .8rem;
+    }
+
+    .form button {
+        padding: .6rem 1rem;
+        font-size: .7rem;
+        white-space: nowrap;
+    }
+
+    .book-collage {
+        width: 320px;
+        height: 360px;
+        margin: 2rem auto 0;
+    }
+
+    .book {
+        width: 110px;
+        height: 160px;
+    }
+
+    .book-1 {
+        top: 70px;
+        left: 20px;
+    }
+
+    .book-2 {
+        top: 25px;
+        left: 120px;
+    }
+
+    .book-3 {
+        top: 115px;
+        left: 165px;
+    }
+
+    .book-collage::before {
+        width: 250px;
+        height: 250px;
+        top: 35px;
+        right: 10px;
+    }
+
+    .books {
+        margin-top: 2rem;
+    }
+
+    .bookShow p:nth-child(1) {
+        width: auto;
+        font-size: 2rem;
+    }
+
+    .bookShow p:nth-child(2) {
+        width: 100%;
+        font-size: .8rem;
+        line-height: 1.6;
+    }
+
+    .bookShow .currant-book {
+        min-height: 150px;
+    }
+
+    .row .card {
+        margin: 1rem auto !important;
+
+    }
+
+    .not-found {
+        width: 100%;
+        min-height: 400px;
+        text-align: center;
+    }
+
+    .not-found h2 {
+        margin: 1rem 0 .5rem;
+    }
+
+    .not-found p {
+        color: #817D71;
+        font-size: .9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    footer {
+        padding-top: 1.5rem;
+    }
+
+    .footer-links {
+        gap: 2rem;
+    }
+
+    .footer-links .brand p {
+        width: 100%;
+        font-size: .8rem;
+        line-height: 1.6;
+    }
+
+    .footer-links .links a {
+        font-size: .8rem;
+        margin-bottom: .7rem;
+    }
+
+    .footer-links .links h6 {
+        font-size: .8rem;
+    }
+
+    .footer-about {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .container-fluid {
+        width: 94% !important;
+    }
+
+    .contentPara,
+    .content,
+    .bookShow {
+        width: 92%;
+    }
+
+    .search p:nth-child(1) {
+        font-size: 45px;
+        letter-spacing: -2px;
+    }
+
+    .search p:nth-child(2) {
+        font-size: .75rem;
+    }
+
+    .form {
+        padding: .2rem;
+    }
+
+    .form input {
+        height: 2.1rem;
+        font-size: .7rem;
+    }
+
+    .form button {
+        padding: .55rem .8rem;
+        font-size: .65rem;
+    }
+
+    .book-collage {
+        width: 280px;
+        height: 320px;
+    }
+
+    .book {
+        width: 95px;
+        height: 140px;
+    }
+
+    .book-1 {
+        top: 65px;
+        left: 10px;
+    }
+
+    .book-2 {
+        top: 20px;
+        left: 105px;
+    }
+
+    .book-3 {
+        top: 105px;
+        left: 145px;
+    }
+
+    .book-collage::before {
+        width: 220px;
+        height: 220px;
+        right: 5px;
+    }
+
+    .footer-links {
+        gap: 1.5rem;
+    }
+
+}
+
+.book-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 9999;
+
+    padding: 1rem;
+
+    backdrop-filter: blur(8px);
+}
+
+
+.book-modal-content {
+    position: relative;
+
+    display: flex !important;
+    gap: 2rem;
+
+    width: 750px !important;
+    max-width: 100% !important;
+
+    height: 500px !important;
+
+
+
+    background-color: #F5F0EB !important;
+
+}
+
+
+.modal-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    flex-shrink: 0;
+    background-color: #E8E4D9;
+}
+
+
+.modal-image img {
+    max-width: 200px;
+    height: 300px;
+
+    object-fit: contain;
+
+    border-radius: .5rem;
+}
+
+
+.modal-info {
+    flex: 1;
+
+    padding-top: 3rem;
+    padding-right: 2rem;
+}
+
+.modal-info hr {
+    color: #817D71;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+
+}
+
+.modal-info h2 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+    font-size: 2rem;
+}
+
+.modal-info h6 {
+    font-size: .8rem;
+    color: #817D71;
+    letter-spacing: .1rem;
+}
+
+
+.modal-info p {
+    color: #817D71;
+}
+
+.modal-info>p {
+    font-size: .9rem !important;
+    word-break: break-all;
+    width: 250px;
+}
+
+.modal-info .author {
+    font-size: .9rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+    font-weight: 500;
+    word-break: break-all;
+    width: 250px;
+}
+
+
+.modal-info .year {
+    font-size: .9rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+    font-weight: 500;
+}
+
+
+.modal-info .description {
+    line-height: 1.7;
+}
+
+.format {
+    font-size: .6rem !important;
+    color: #817D71;
+    letter-spacing: .1rem;
+    width: 100px;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+
+    border: 2px solid rgb(195, 195, 195);
+    border-radius: 50%;
+    background: transparent;
+
+    font-size: 1.6rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: #000000;
+}
+
+
+.modal-close:hover {
+    color: #7A5C44;
+}
+
+
+@media (max-width: 767.98px) {
+
+    .book-modal-content {
+        flex-direction: column;
+
+        width: 95%;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+
+        gap: 1rem;
+
+        padding: 1.5rem;
+    }
+
+
+    .modal-image {
+        width: 180px;
+
+        margin: auto;
+    }
+
+
+    .modal-image img {
+        height: 260px;
+    }
+
+
+    .modal-info {
+        padding-top: 0;
+    }
+
+
+    .modal-info h2 {
+        font-size: 1.5rem;
+    }
+
+}
