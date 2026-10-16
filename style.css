@@ -400,6 +400,19 @@ footer {
 }
 
 
+.description  {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere !important;
+    white-space: normal;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #817D71;
+    font-size: 0.9rem;
+}
+
+
 @media (min-width: 1200px) {
 
     .contentPara,
@@ -723,22 +736,24 @@ footer {
 }
 
 
+
 .book-modal-content {
     position: relative;
-
-    display: flex !important;
+    display: flex;
     gap: 2rem;
 
-    width: 750px !important;
-    max-width: 100% !important;
+    width: 750px;
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
 
-    height: 500px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-
-
-    background-color: #F5F0EB !important;
-
+    background-color: #F5F0EB;
+    box-sizing: border-box;
 }
+
 
 
 .modal-image {
