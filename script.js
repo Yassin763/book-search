@@ -126,7 +126,7 @@ async function openBookModal(id) {
 
     try {
 
-const response = await fetch("http://localhost:3000/api/book-description", {
+const response = await fetch("https://book-search-alpha-gold.vercel.app/api/book-description", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
