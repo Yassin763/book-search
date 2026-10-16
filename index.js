@@ -103,3 +103,4 @@ return res.json({ description: summary });
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+module.exports = app;
